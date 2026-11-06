@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "poindeo": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/launch_poindeo_mcp.mjs",
+        "${CLAUDE_PLUGIN_ROOT}/tools/mcp-server/index.mjs"
+      ]
+    }
+  }
+}

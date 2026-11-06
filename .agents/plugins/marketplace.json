@@ -1,0 +1,19 @@
+{
+  "name": "poindeo-plugins",
+  "owner": {
+    "name": "Poindeo",
+    "url": "https://poindeo.com"
+  },
+  "plugins": [
+    {
+      "name": "poindeo-mcp",
+      "source": "./plugins/poindeo-mcp",
+      "description": "Poindeo video editor agent tools — zooms, camera moves, frame-accurate checks, MP4 export.",
+      "version": "0.1.7",
+      "author": {
+        "name": "Poindeo"
+      },
+      "homepage": "https://poindeo.com/mcp"
+    }
+  ]
+}

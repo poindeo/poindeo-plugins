@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "poindeo": {
+      "command": "./scripts/launch_poindeo_mcp",
+      "args": [
+        "./tools/mcp-server/index.mjs"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 30
+    }
+  }
+}

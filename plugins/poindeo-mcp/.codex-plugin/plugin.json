@@ -1,0 +1,9 @@
+{
+  "version": "0.1.7",
+  "name": "poindeo-mcp",
+  "mcpServers": "./.mcp-codex.json",
+  "description": "Poindeo video editor agent tools (local MCP server)",
+  "author": {
+    "name": "Poindeo"
+  }
+}

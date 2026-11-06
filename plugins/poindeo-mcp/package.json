@@ -1,0 +1,19 @@
+{
+  "name": "poindeo-mcp",
+  "version": "0.1.7",
+  "description": "Poindeo video editor local MCP server (stdio)",
+  "type": "module",
+  "bin": {
+    "poindeo-mcp": "tools/mcp-server/index.mjs"
+  },
+  "files": [
+    "tools/mcp-server/index.mjs",
+    "tools/mcp-server/update.mjs",
+    "tools/mcp-server/telemetry.mjs",
+    "src/utils/editor/agent/protocol.mjs",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  }
+}
