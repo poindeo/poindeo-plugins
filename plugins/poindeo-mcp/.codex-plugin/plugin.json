@@ -1,0 +1,24 @@
+{
+  "version": "0.1.10",
+  "name": "poindeo-mcp",
+  "mcpServers": "./.mcp-codex.json",
+  "icon": "./icon.png",
+  "description": "Poindeo video editor agent tools (local MCP server)",
+  "author": {
+    "name": "Poindeo"
+  },
+  "interface": {
+    "displayName": "Poindeo",
+    "shortDescription": "Let agents edit real videos in the Poindeo editor",
+    "longDescription": "Connects ChatGPT and Codex to the Poindeo browser-based video editor: read projects, import media, add zoom points and camera moves, verify framing with frame captures, and export finished MP4s via a local MCP server.",
+    "developerName": "Poindeo",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "composerIcon": "./icon.png",
+    "logo": "./icon.png",
+    "websiteURL": "https://poindeo.com/mcp"
+  }
+}

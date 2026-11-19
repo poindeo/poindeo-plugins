@@ -1,0 +1,25 @@
+{
+  "name": "poindeo-mcp",
+  "version": "0.1.10",
+  "description": "Poindeo video editor local MCP server (stdio)",
+  "mcpName": "com.poindeo/poindeo-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poindeo/poindeo-plugins"
+  },
+  "homepage": "https://poindeo.com/mcp",
+  "type": "module",
+  "bin": {
+    "poindeo-mcp": "tools/mcp-server/index.mjs"
+  },
+  "files": [
+    "tools/mcp-server/index.mjs",
+    "tools/mcp-server/update.mjs",
+    "tools/mcp-server/telemetry.mjs",
+    "src/utils/editor/agent/protocol.mjs",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  }
+}

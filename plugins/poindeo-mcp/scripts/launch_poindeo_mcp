@@ -1,0 +1,47 @@
+#!/bin/sh
+set -eu
+
+PATH="${PATH:-/usr/bin:/bin}:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+export PATH
+
+DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+BUNDLED=${1:-$DIR/../tools/mcp-server/index.mjs}
+[ $# -gt 0 ] && shift
+
+node_meets() {
+  "$1" -e 'process.exit(Number(process.versions.node.split(".")[0]) >= 18 ? 0 : 1)' 2>/dev/null
+}
+
+NODE_BIN=''
+if [ -n "${CODEX_MCP_NODE_PATH:-}" ] && [ -x "${CODEX_MCP_NODE_PATH}" ] && node_meets "${CODEX_MCP_NODE_PATH}"; then
+  NODE_BIN=${CODEX_MCP_NODE_PATH}
+fi
+
+if [ -z "$NODE_BIN" ]; then
+  for candidate in "$HOME"/.nvm/versions/node/*/bin/node; do
+    [ -x "$candidate" ] || continue
+    if node_meets "$candidate"; then NODE_BIN=$candidate; fi
+  done
+fi
+
+if [ -z "$NODE_BIN" ]; then
+  if node_path=$(command -v node 2>/dev/null); then
+    case "$node_path" in
+      /*) if node_meets "$node_path"; then NODE_BIN=$node_path; fi ;;
+    esac
+  fi
+fi
+
+if [ -z "$NODE_BIN" ]; then
+  printf '%s\n' 'poindeo-mcp could not find Node 18+. Install Node 18+ (guide: https://poindeo.com/mcp) or set CODEX_MCP_NODE_PATH.' >&2
+  exit 127
+fi
+
+BUNDLED_UPDATE=$(dirname -- "$BUNDLED")/update.mjs
+ENTRY=''
+if [ -f "$BUNDLED_UPDATE" ]; then
+  ENTRY=$("$NODE_BIN" "$BUNDLED_UPDATE" --pick-entry "$BUNDLED" 2>/dev/null) || ENTRY=''
+fi
+[ -n "$ENTRY" ] || ENTRY=$BUNDLED
+
+exec "$NODE_BIN" "$ENTRY" "$@"
